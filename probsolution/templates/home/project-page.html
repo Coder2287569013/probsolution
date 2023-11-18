@@ -1,0 +1,19 @@
+{% include 'home/homePage.html' %}
+
+{% block content %}
+    <h1>{{object.name}}</h1>
+    <img src="{{ object.image.url }}">
+    <h2>Tasks:</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task.text }}</li>
+            <ul>
+                {% for task_item in task_items %}
+                    {% if task_item.task_id == task %}
+                        <li>{{ task_item.text }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+{% endblock %}

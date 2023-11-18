@@ -1,0 +1,9 @@
+
+{% include 'home/homePage.html' %}
+{% block content %}
+    {% for project in projects %}
+      {% if request.user.id == project.author_id %}
+        <h1><a href="{% url 'projectpage' pk=project.pk %}" style="text-decoration: none; color:azure;">{{project.name}}</a></h1>
+      {% endif %}
+    {% endfor %}
+{% endblock %}
